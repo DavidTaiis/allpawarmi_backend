@@ -1,4 +1,4 @@
-Plans backend
+
 Pasos para configurar el proyecto:
 
 Paso 1: Checkout del proyecto
