@@ -51,7 +51,7 @@ class ConsumerProcess
     {
         $product = $this->measureProductRepository->getProductById($productId);
         ProductResource::withoutWrapping();
-        return ProductResource::make($product);
+        return ProductResource::collection($product);
     }
    
 }

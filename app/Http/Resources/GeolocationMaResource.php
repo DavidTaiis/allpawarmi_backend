@@ -15,8 +15,15 @@ class GeolocationMaResource extends JsonResource
     public function toArray($request)
     {
         return [
+            "position" => [
+                'lat' => $this->lat,
+                'lng' => $this->lng
+            ],
             'id' => $this->id,
             'name' => $this->name,
+            'description' => $this->description,
+            'type' => $this->type,
+            'users_id' => $this->users_id
 
         ];
     }

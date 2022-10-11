@@ -34,9 +34,11 @@ class GeolocationMaProcess
 
     public function addGeolocation($request)
     {
+        $userId = Auth::user()->id;
+        $name = Auth::user()->name;
         $input = $request->all();
         $this->geolocationMaValidator->addGeolocation($input);
-        $this->geolocationMaRepository->addGeolocation($input);
+        $this->geolocationMaRepository->addGeolocation($input, $userId,$name);
         
         return Response::json([
             'status' => 'success',

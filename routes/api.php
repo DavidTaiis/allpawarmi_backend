@@ -34,7 +34,7 @@ Route::group(['prefix' => 'consumer', 'namespace' => 'Api'], function () {
     
 });
 
-Route::group(['prefix' => 'geolocation', 'namespace' => 'Api'], function () {
+Route::group(['prefix' => 'geolocation', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
     Route::post('addGeolocation', 'geolocationMaController@addGeolocation');
     Route::get('getGeolocationFarmers', 'geolocationMaController@getGeolocationFarmers');      
 });
