@@ -110,6 +110,21 @@ Route::group(['middleware' => ['auth', 'rbac']], function () {
         Route::get('list', 'NewsController@getList')->name('listDataNews');
         Route::post('saveNews', 'NewsController@postSave')->name('saveNews');
     });
+
+    Route::group(['prefix' => 'buses'], function () {
+        Route::get('/', 'BusesLineController@index')->name('viewIndexBusesLine');
+        Route::get('index', 'BusesLineController@index')->name('viewIndexBusesLine');
+        Route::get('form/{id?}', 'BusesLineController@getForm')->name('getFormBusesLine');
+        Route::get('list', 'BusesLineController@getList')->name('listDataBusesLine');
+        Route::post('saveBusesLine', 'BusesLineController@postSave')->name('saveBusesLine');
+    });
+
+    Route::group(['prefix' => 'stop'], function () {
+        Route::get('/list/{id?}', 'StopController@getList')->name('getListDataStop');
+        Route::get('/{id?}', 'StopController@index')->name('indexViewStop');
+        Route::get('/form/create/{busesLineId?}/{id?}', 'StopController@getForm')->name('getFormStop');
+        Route::post('save', 'StopController@postSave')->name('saveStop');
+    });
 });
 
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {

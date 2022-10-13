@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-class BusesLine extends Model
+/**
+ * Class Stop
+ * @package App\Http\Models
+ * @property MorphMany images
+ * @property BelongsTo company
+ * @property int id
+ * @property string description
+ * @property string level
+ * @property string status
+ */
+class Stop extends Model
 {
 
     /**
@@ -14,7 +24,7 @@ class BusesLine extends Model
      *
      * @var string
      */
-    public $table = 'buses_linea';
+    public $table = 'stops';
 
     protected $guarded = [];
     const STATUS_ACTIVE = 'ACTIVE';
@@ -32,14 +42,10 @@ class BusesLine extends Model
      * @var array
      */
     protected $fillable = [
-        'status',
         'name',
-        'lat_init',
-        'lng_init',
-        'lat_finish',
-        'lng_finish',
         'description',
-        'price',
+        'transport_geolocation_id',
+        'buses_linea_id',
         'status'
     ];
 
@@ -50,13 +56,11 @@ class BusesLine extends Model
      */
     protected $casts = [
         'status' => 'string',
+        'buses_linea_id' => 'integer',
+        'transport_geolocation_id' => 'integer',
         'name' => 'string',
-        'lat_init' => 'string',
-        'lng_init' => 'string',
-        'lat_finish' => 'string',
-        'lng_finish' => 'text',
-        'description' => 'text',
-        'price' => 'decimal:2'
+        'description' => 'string',
+        
     ];
 
     /**
@@ -68,5 +72,10 @@ class BusesLine extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function geolocation()
+    {
+        return $this->belongsTo(TransportGeolocation::class, 'transport_geolocation_id');
+    }
 
 }

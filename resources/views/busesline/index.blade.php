@@ -7,7 +7,7 @@
         [
         'label'=>'Crear',
         'icon'=>'<i class="la la-plus"></i>',
-        'handler_js'=>'newBusesLine()',
+        'handler_js'=>'newbusesLine()',
         'color'=>'btn-primary'
         ],
       ]
@@ -29,7 +29,8 @@
     <input id="action_get_form" type="hidden" value="{{ route("getFormBusesLine") }}"/>
     <input id="action_save" type="hidden" value="{{ route("saveBusesLine")}}"/>
     <input id="action_list" type="hidden" value="{{ route("listDataBusesLine") }}"/>
+    <input id="action_index_stops" type="hidden" value="{{ route("indexViewStop") }}"/>
 @endsection
 @section('additional-scripts')
-    <script src="{{asset("js/app/busesline/index.js")}}"></script>
+    <script src="{{asset("js/app/busesLine/index.js")}}"></script>
 @endsection

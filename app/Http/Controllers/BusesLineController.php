@@ -71,11 +71,11 @@ class BusesLineController extends MyBaseController
     {
 
         $method = 'POST';
-        $busesline = isset($id) ? BusesLine::find($id) : new BusesLine();
+        $busesLine = isset($id) ? BusesLine::find($id) : new BusesLine();
 
         $view = View::make('busesline.loads._form', [
             'method' => $method,
-            'busesline' => $busesline,
+            'busesLine' => $busesLine,
         ])->render();
         return Response::json(array(
             'html' => $view,
@@ -97,9 +97,8 @@ class BusesLineController extends MyBaseController
                 }
             }
           
-            $busesline->name = trim($data['title']);
-            $busesline->description = trim($data['lat']);
-            $busesline->status = trim($data['lng']);
+            $busesline->name = trim($data['name']);
+            $busesline->description = trim($data['description']);
             $busesline->lat_init = trim($data['lat_init']);
             $busesline->lng_init = trim($data['lng_init']);
             $busesline->lat_finish = trim($data['lat_finish']);
