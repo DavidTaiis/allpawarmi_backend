@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-class BusesLine extends Model
+
+class TransportGeolocation extends Model
 {
 
     /**
@@ -14,7 +15,7 @@ class BusesLine extends Model
      *
      * @var string
      */
-    public $table = 'buses_linea';
+    public $table = 'transport_geolocation';
 
     protected $guarded = [];
     const STATUS_ACTIVE = 'ACTIVE';
@@ -32,14 +33,11 @@ class BusesLine extends Model
      * @var array
      */
     protected $fillable = [
-        'status',
+        'id',
         'name',
-        'lat_init',
-        'lng_init',
-        'lat_finish',
-        'lng_finish',
-        'description',
-        'price',
+        'lat',
+        'lng',
+        'type',
         'status'
     ];
 
@@ -49,14 +47,12 @@ class BusesLine extends Model
      * @var array
      */
     protected $casts = [
-        'status' => 'string',
+        'id' => 'integer',
         'name' => 'string',
-        'lat_init' => 'string',
-        'lng_init' => 'string',
-        'lat_finish' => 'string',
-        'lng_finish' => 'text',
-        'description' => 'text',
-        'price' => 'decimal:2'
+        'lat' => 'string',
+        'lng' => 'string',
+        'type' => 'text',
+        'status' => 'string'
     ];
 
     /**
@@ -68,5 +64,4 @@ class BusesLine extends Model
         'created_at',
         'updated_at',
     ];
-
 }
