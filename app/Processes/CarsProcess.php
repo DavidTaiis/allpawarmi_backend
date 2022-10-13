@@ -44,4 +44,10 @@ class CarsProcess
         CarsResource::withoutWrapping();
         return CarsResource::collection($privado);
     }
+
+    public function getCamionetaId($id){
+        $camioneta = $this->carsRepository->getCamionetaId($id);
+        CarsResource::withoutWrapping();
+        return new CarsResource($camioneta);
+    }
 }

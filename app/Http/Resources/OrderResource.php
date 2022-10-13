@@ -19,6 +19,9 @@ class OrderResource extends JsonResource
             'seller' => $this->user->name,
             'total' => $this->total,
             'deliver_date' => $this->deliver_date,
+            'client' => $this->userClient->name,
+            'client_id' => $this->userClient->id,
+            'status' => $this->status
         ];
     }
 }

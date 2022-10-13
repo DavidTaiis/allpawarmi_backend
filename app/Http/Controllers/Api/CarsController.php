@@ -31,4 +31,8 @@ class CarsController extends Controller
     {
         return $this->carsProcess->getPrivado();
     }
+    public function getCamionetaId($id)
+    {
+        return $this->carsProcess->getCamionetaId($id);
+    }
 }

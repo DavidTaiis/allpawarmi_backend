@@ -51,4 +51,10 @@ class GeolocationMaProcess
         GeolocationMaResource::withoutWrapping();
         return GeolocationMaResource::collection($geolocation);
     }
+
+    public function getGeolocationFarmerId($id){
+        $geolocation = $this->geolocationMaRepository->getGeolocationFarmerId($id);
+        GeolocationMaResource::withoutWrapping();
+        return GeolocationMaResource::collection($geolocation);
+    }
 }

@@ -24,4 +24,9 @@ class CarsRepository
         return $privado->get() ?? null;
 
     }
+
+    public function getCamionetaId($id){
+        $camioneta = Cars::query()->find($id);
+        return $camioneta ?? null;
+    }
 }

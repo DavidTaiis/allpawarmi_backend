@@ -26,5 +26,14 @@ class MeasureProductRepository
 
         return $product->get() ?? null;
     }  
+    public function getProductsByAuth()
+    {
+        $userId = Auth::user()->id;
+        $products  = MeasureProduct::query();
+        
+        $products->where('users_id' , $userId);
+
+        return $products->get() ?? null;
+    }  
 
 }

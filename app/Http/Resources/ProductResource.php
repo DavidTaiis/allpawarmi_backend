@@ -21,7 +21,9 @@ class ProductResource extends JsonResource
             'stock' => $this->stock,
             'measure' => $this->measure->measure,
             'description' => $this->product->description,
-            'idFarmer' => $this->users_id
+            'farmer' => $this->user->name,
+            'phoneFarmer' => $this->user->phone_number,
+            'farmerId' => $this->users_id
         ];
     }
 }

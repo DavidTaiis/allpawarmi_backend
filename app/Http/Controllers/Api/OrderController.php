@@ -27,13 +27,20 @@ class OrderController extends Controller
     {
         return $this->orderProcess->createOrder($request);
     }
-    public function getOrdersByConsumerId($consumerId)
+    public function getOrdersByConsumerId()
     {
-        return $this->orderProcess->getOrdersByConsumerId($consumerId);
+        return $this->orderProcess->getOrdersByConsumerId();
     }
 
     public function getProductsOrder($orderId)
     {
         return $this->orderProcess->getProductsOrder($orderId);
+    }
+    public function updateStatus(Request $request){
+        return $this->orderProcess->updateStatus($request);
+    }
+    public function getOrdersBySeller()
+    {
+        return $this->orderProcess->getOrdersBySeller();
     }
 }

@@ -21,4 +21,9 @@ class NotificationRepository
         $notification->save();
 
     }
+
+    public function getNotifications(){
+        $notifications  = Notification::query();
+        return $notifications->get() ?? null;
+    }
 }

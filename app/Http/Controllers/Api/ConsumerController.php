@@ -35,5 +35,9 @@ class ConsumerController extends Controller
     {
         return $this->consumerProcess->getProductById($productId);
     }
+    public function getProductsByAuth()
+    {
+        return $this->consumerProcess->getProductsByAuth();
+    }
 
 }

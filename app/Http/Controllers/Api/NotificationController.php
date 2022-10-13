@@ -28,4 +28,9 @@ class NotificationController extends Controller
         return $this->notificationProcess->addNotification($request);
     }
 
+    public function getNotifications()
+    {
+        return $this->notificationProcess->getNotifications();
+    }
+
 }

@@ -44,5 +44,12 @@ class NotificationProcess
             'message' => '! Notificación creada correctamente.!',
         ], 200);
     }
+
+    public function getNotifications()
+    {
+        $notifications = $this->notificationRepository->getNotifications();
+        NotificationResource::withoutWrapping();
+        return NotificationResource::collection($notifications);
+    }
    
 }

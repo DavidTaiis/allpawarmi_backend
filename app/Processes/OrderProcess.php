@@ -38,10 +38,11 @@ class OrderProcess
     {
         try {
             DB::beginTransaction();
+            $userId = Auth::user()->id;
             $input = $request->all();
-            $order = $this->orderRepository->createOrder($input);
+            $order = $this->orderRepository->createOrder($input, $userId);
             foreach ($input['products'] as $products) {
-                $this->orderRepository->createProductOrder($order, $products);
+                $this->orderRepository->createProductOrder($order, $products,$userId);
             }
             DB::commit();
             return Response::json([
@@ -58,12 +59,13 @@ class OrderProcess
         }
       
     }
-    public function getOrdersByConsumerId($consumerId){
-        $orders = $this->orderRepository->getOrdersByConsumerId($consumerId);
+    public function getOrdersByConsumerId(){
+       
+        $orders = $this->orderRepository->getOrdersByConsumerId();
         OrderResource::withoutWrapping();
         return OrderResource::collection($orders);
-
     }
+
     public function getProductsOrder($orderId){
         $orders = $this->orderRepository->getProductsOrder($orderId);
         OrderProductResource::withoutWrapping();
@@ -71,5 +73,20 @@ class OrderProcess
 
     }
 
-   
+    public function updateStatus($request){
+        $input = $request->all();
+        $this->orderRepository->updateStatus($input);
+        
+        return Response::json([
+            'status' => 'success',
+            'message' => '! Actualizada correctamente creada correctamente.!',
+        ], 200);
+    }
+
+    public function getOrdersBySeller(){
+       
+        $orders = $this->orderRepository->getOrdersBySeller();
+        OrderResource::withoutWrapping();
+        return OrderResource::collection($orders);
+    }
 }

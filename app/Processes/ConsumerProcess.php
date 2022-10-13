@@ -53,5 +53,10 @@ class ConsumerProcess
         ProductResource::withoutWrapping();
         return ProductResource::collection($product);
     }
-   
+    public function  getProductsByAuth()
+    {
+        $products = $this->measureProductRepository->getProductsByAuth();
+        ProductResource::withoutWrapping();
+        return ProductResource::collection($products);
+    }
 }

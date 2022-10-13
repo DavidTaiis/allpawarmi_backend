@@ -6,17 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-/**
- * Class Order
- * @package App\Http\Models
- * @property MorphMany images
- * @property BelongsTo company
- * @property int id
- * @property string description
- * @property string level
- * @property string status
- */
-class Order extends Model
+
+
+class GeolocationMa extends Model
 {
 
     /**
@@ -24,7 +16,7 @@ class Order extends Model
      *
      * @var string
      */
-    public $table = 'order';
+    public $table = 'transport_geolocation';
 
     protected $guarded = [];
     const STATUS_ACTIVE = 'ACTIVE';
@@ -42,11 +34,14 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'id_client',
-        'id_seller',
-        'total',
-        'deliver_date',
-        'status'
+        'id',
+        'name',
+        'lat',
+        'lng',
+        'type',
+        'description',
+        'status',
+        'busesLine_id'
     ];
 
     /**
@@ -55,12 +50,14 @@ class Order extends Model
      * @var array
      */
     protected $casts = [
-        'status' => 'string',
-        'id_client' => 'integer',
-        'id_seller' => 'integer',
-        'total' => 'decimal:2',
-        'deliver_date' => 'datatime',
-        'status' => 'status',
+        'id' => 'integer',
+        'busesLine_id' => 'integer',
+        'name' => 'string',
+        'lat' => 'string',
+        'lng' => 'string',
+        'type' => 'text',
+        'description' => 'text',
+        'status' => 'string'
     ];
 
     /**
@@ -73,15 +70,12 @@ class Order extends Model
         'updated_at',
     ];
 
-
-    public function user()
+    
+    /**
+     * @return BelongsTo
+     */
+    public function busesLine()
     {
-        return $this->belongsTo(user::class, 'id_seller');
+        return $this->belongsTo(BusesLine::class, 'busesLine_id');
     }
-
-    public function userClient()
-    {
-        return $this->belongsTo(user::class, 'id_client');
-    }
-
 }
