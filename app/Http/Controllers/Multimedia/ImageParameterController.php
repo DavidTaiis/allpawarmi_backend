@@ -90,6 +90,7 @@ class ImageParameterController extends MyBaseController
             $feature->extension = implode(',', $data['extension']);
             $feature->max_size = trim($data['max_size']);
             $feature->save();
+            
             DB::commit();
             return Response::json([
                 'status' => 'success',

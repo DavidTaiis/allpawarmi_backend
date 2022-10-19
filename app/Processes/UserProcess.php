@@ -57,10 +57,9 @@ class UserProcess
 
     public function updateProfileUser($request)
     {
-
-        $this->userValidator->updateProfileUser($request);
         $user = $this->userRepository->findById(Auth::user()->id);
         $user->name = $request['name'];
+        $user->phone_number = $request['phone_number'];
         $user->save();
         $image = isset($request['image']) ? $request['image'] : null;
         if ($image != null) {
@@ -97,8 +96,8 @@ class UserProcess
 
     public function getFarmerId($id){
         $user = $this->userRepository->getFarmerId($id);
-        FarmerResource::withoutWrapping();
-        return new FarmerResource($user);
+        UserResource::withoutWrapping();
+        return new UserResource($user);
 
     }
 

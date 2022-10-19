@@ -43,7 +43,13 @@ class OrderRepository
         $userId = Auth::user()->id;
         $order  = Order::query();
         $order->where('id_client' , $userId);
-        $order->with(['user']);
+        return $order->get() ?? null;
+    }
+
+    public function getOrdersBySeller(){
+        $userId = Auth::user()->id;
+        $order  = Order::query();
+        $order->where('id_seller' , $userId);
         return $order->get() ?? null;
     }
     
@@ -59,13 +65,5 @@ class OrderRepository
         $order->status = $input['status'];
         
         $order->save();
-    }
-
-    public function getOrdersBySeller(){
-        $userId = Auth::user()->id;
-        $order  = Order::query();
-        $order->where('id_seller' , $userId);
-        $order->with(['user'],['userClient']);
-        return $order->get() ?? null;
     }
 }

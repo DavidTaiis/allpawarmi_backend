@@ -3,6 +3,7 @@
 namespace App\Processes;
 
 use App\Http\Resources\OrderResource;
+use App\Http\Resources\OrderDetaillsResource;
 use App\Http\Resources\OrderProductResource;
 use App\Models\Image;
 use App\Models\Order;
@@ -65,6 +66,12 @@ class OrderProcess
         OrderResource::withoutWrapping();
         return OrderResource::collection($orders);
     }
+    public function getOrdersBySeller(){
+       
+        $orders = $this->orderRepository->getOrdersBySeller();
+        OrderResource::withoutWrapping();
+        return OrderResource::collection($orders);
+    }
 
     public function getProductsOrder($orderId){
         $orders = $this->orderRepository->getProductsOrder($orderId);
@@ -79,14 +86,7 @@ class OrderProcess
         
         return Response::json([
             'status' => 'success',
-            'message' => '! Actualizada correctamente creada correctamente.!',
+            'message' => '! Actualizada correctamente.!',
         ], 200);
-    }
-
-    public function getOrdersBySeller(){
-       
-        $orders = $this->orderRepository->getOrdersBySeller();
-        OrderResource::withoutWrapping();
-        return OrderResource::collection($orders);
     }
 }

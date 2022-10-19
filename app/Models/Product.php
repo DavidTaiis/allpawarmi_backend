@@ -89,5 +89,13 @@ class Product extends Model
     {
         return $this->belongsTo(MeasureProduct::class, 'users_id');
     }
+    /**
+     * @return MorphMany
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'entity');
+    }
+
 
 }

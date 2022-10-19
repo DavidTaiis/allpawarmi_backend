@@ -12,8 +12,9 @@ class MeasureProductRepository
     public function getProductsByFarmer($farmerId)
     {
         $products  = MeasureProduct::query();
-        
+        $products->where('status' , "ACTIVE");
         $products->where('users_id' , $farmerId);
+        
 
         return $products->get() ?? null;
     }    
@@ -32,6 +33,7 @@ class MeasureProductRepository
         $products  = MeasureProduct::query();
         
         $products->where('users_id' , $userId);
+        $products->where('status' , "ACTIVE");
 
         return $products->get() ?? null;
     }  

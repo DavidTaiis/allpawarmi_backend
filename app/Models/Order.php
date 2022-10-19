@@ -76,7 +76,7 @@ class Order extends Model
 
     public function user()
     {
-        return $this->belongsTo(user::class, 'id_seller');
+        return $this->belongsTo(User::class, 'id_seller');
     }
 
     public function userClient()

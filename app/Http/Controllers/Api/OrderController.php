@@ -36,6 +36,7 @@ class OrderController extends Controller
     {
         return $this->orderProcess->getProductsOrder($orderId);
     }
+    
     public function updateStatus(Request $request){
         return $this->orderProcess->updateStatus($request);
     }
@@ -43,4 +44,5 @@ class OrderController extends Controller
     {
         return $this->orderProcess->getOrdersBySeller();
     }
+
 }

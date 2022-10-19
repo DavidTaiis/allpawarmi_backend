@@ -8,7 +8,7 @@
                 <!--begin::Aside Top-->
                 <!--end::Aside Top-->
                 <!--begin::Aside Bottom-->
-                <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center" style="background-position-y: calc(50% + 0rem); background-image: url({{asset("images/mesasana.jpg")}})"></div>
+                <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center" style="background-position-y: calc(50% + 0rem); background-image: url({{asset("images/splash.png")}})"></div>
                 <!--end::Aside Bottom-->
             </div>
             <!--begin::Aside-->

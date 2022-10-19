@@ -4,7 +4,7 @@
     
         <div class="img-aside">
             <!--begin::Logo-->
-                <img  class="img-logo" alt="Logo" src="{{asset("images/Logobypromostock1.png")}}"/>
+                <img  class="img-logo" alt="Logo" src="{{asset("images/splash.png")}}"/>
         </div>
 
        

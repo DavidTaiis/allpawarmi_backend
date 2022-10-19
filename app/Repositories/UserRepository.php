@@ -54,5 +54,22 @@ class UserRepository
         $user = User::query()->find($id);
         return $user ?? null;
     }
-    
+    public function getImageParameter()
+    {
+        $imageParameter = ImageParameter::query()
+            ->where('entity', ImageParameter::TYPE_USER)
+            ->where('name', 'Perfil')->first();
+      
+        return $imageParameter->id;
+    }
+
+    public function getImageModel($imageParameterId)
+    {
+
+        $imageModel = Image::query()
+            ->where('entity_id', Auth::user()->id)
+            ->where('image_parameter_id', $imageParameterId)->first();
+
+        return $imageModel ?? null;
+    }
 }

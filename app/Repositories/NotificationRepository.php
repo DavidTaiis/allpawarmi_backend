@@ -11,13 +11,13 @@ class NotificationRepository
 {
     public function addNotification($input)
     {
-       
+        $userId = Auth::user()->id;
        $notification = new Notification();
        $notification->lat =  $input["lat"];
        $notification->lng =  $input["lng"];
        $notification->type =  $input["type"];
        $notification->description =  $input["description"];
-       $notification->users_id =  $input["users_id"];
+       $notification->users_id =  $userId;
         $notification->save();
 
     }

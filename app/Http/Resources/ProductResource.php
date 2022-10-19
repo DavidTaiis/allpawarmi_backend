@@ -16,14 +16,17 @@ class ProductResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'product' => $this->product->name,
+            'product' => $this->product->name,            
+            'productId' => $this->product->id,
             'price' => $this->price,
             'stock' => $this->stock,
             'measure' => $this->measure->measure,
+            'measureId' => $this->measure->id,
             'description' => $this->product->description,
             'farmer' => $this->user->name,
             'phoneFarmer' => $this->user->phone_number,
-            'farmerId' => $this->users_id
+            'farmerId' => $this->users_id,
+            'images' => ImageResource::collection($this->product->images)
         ];
     }
 }

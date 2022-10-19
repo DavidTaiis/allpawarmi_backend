@@ -17,9 +17,11 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Api\Auth'], function () {
     Route::post('login', 'LoginController@login');
 });
 
-Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
+Route::group(['prefix' => 'user', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
     Route::post('register', 'UserController@register');
     Route::get('getFarmer/{id?}', 'UserController@getFarmerId');
+    Route::get('getUser', 'UserController@getUser');
+    Route::post('updateProfileUser', 'UserController@updateProfileUser');
 
 });
 
@@ -41,7 +43,7 @@ Route::group(['prefix' => 'geolocation', 'namespace' => 'Api','middleware' => 'a
     Route::get('getGeolocationFarmerId/{id}', 'geolocationMaController@getGeolocationFarmerId');      
 });
 
-Route::group(['prefix' => 'notification', 'namespace' => 'Api'], function () {
+Route::group(['prefix' => 'notification', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
     Route::post('addNotification', 'NotificationController@addNotification');
     Route::get('getNotifications', 'NotificationController@getNotifications');
 
@@ -69,8 +71,11 @@ Route::group(['prefix' => 'seller', 'namespace' => 'Api','middleware' => 'auth:a
     Route::get('getProductsByAuth', 'ConsumerController@getProductsByAuth');
     Route::post('updateStatus', 'OrderController@updateStatus');
     Route::get('getOrdersBySeller', 'OrderController@getOrdersBySeller');
-
-
+    Route::post('addProduct', 'ProductController@addProduct');
+    Route::post('updateProduct', 'ProductController@updateProduct');
+    Route::get('getMeasures', 'ProductController@getMeasures');
+    Route::get('getMeasures', 'ProductController@getMeasures');
+    Route::get('deleteProduct/{id}', 'ProductController@deleteProduct');
 });
 
 
