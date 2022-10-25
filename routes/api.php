@@ -88,5 +88,10 @@ Route::group(['prefix' => 'camioneta', 'namespace' => 'Api','middleware' => 'aut
     Route::get('getCamionetaAuth','CarsController@getCamionetaAuth');
 });
 
+Route::group(['prefix' => 'lineBus', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
+    Route::get('stops', 'BusesLineController@getStops');
+    Route::get('bus-stops/{idLineBus?}', 'BusesLineController@getLineBusesWithStops');
+});
+
 
 
