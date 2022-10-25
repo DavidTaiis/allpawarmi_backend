@@ -59,6 +59,7 @@ class Order extends Model
         'id_client' => 'integer',
         'id_seller' => 'integer',
         'total' => 'decimal:2',
+        'place_delivery' => 'string',
         'deliver_date' => 'datatime',
         'status' => 'status',
     ];

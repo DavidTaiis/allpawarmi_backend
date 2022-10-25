@@ -37,4 +37,8 @@ class GeolocationMaController extends Controller
     {
         return $this->geolocationMaProcess->getGeolocationFarmerId($id);
     }
+    public function getSellerPoits()
+    {
+        return $this->geolocationMaProcess->getSellerPoits();
+    }
 }

@@ -10,23 +10,25 @@ use Illuminate\Support\Facades\Auth;
 class AssociationRepository
 {
 
-    public function getAssociationById($farmerId){
+    public function getAssociationById(){
+        $userId = Auth::user()->id;
         $association  = Association::query();
-        $association->where("users_id", $farmerId );
+        $association->where("users_id", $userId );
         
         return $association->get() ?? null;
 
     }
     public function updateAssociation($input)
     {
-       
-       $association = Association::find($input["id"]);
+        $userId = Auth::user()->id;
+       $association = Association::query()
+       ->where("users_id", $userId)->first() ?? new Association();
        $association->name = $input["name"];
        $association->lat = $input["lat"];
        $association->lng = $input["lng"];
        $association->advantages = $input["advantages"];
        $association->rules = $input["rules"];
-       $association->users_id = $input["users_id"];
+       $association->users_id = $userId;
         $association->save();
 
     }

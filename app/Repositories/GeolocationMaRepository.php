@@ -31,6 +31,12 @@ class GeolocationMaRepository
                 ->where("users_id", $userId)->first() ?? new GeolocationMa();
                 break;
 
+            case 'Asociacion':
+                $geolocation  = GeolocationMa::query()
+                ->where("type", "Asociacion")
+                ->where("users_id", $userId)->first() ?? new GeolocationMa();
+                break;
+
             case 'Camioneta':
                 $geolocation  = GeolocationMa::query()
                 ->where("users_id", $userId)->first() ?? new GeolocationMa();
@@ -66,6 +72,14 @@ class GeolocationMaRepository
     public function getGeolocationFarmers(){
         $geolocation  = GeolocationMa::query();
         $geolocation->where("type", "Huerto")->orWhere("type", "PuntoVenta");
+        
+        return $geolocation->get() ?? null;
+
+    }
+    
+    public function getSellerPoits(){
+        $geolocation  = GeolocationMa::query();
+        $geolocation->where("type", "PuntoVenta");
         
         return $geolocation->get() ?? null;
 

@@ -16,6 +16,7 @@ class AssociationResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'name' => $this->name,
             'lng' => $this->lng,
             'lat' => $this->lat,
             'advantages' => $this->advantages,

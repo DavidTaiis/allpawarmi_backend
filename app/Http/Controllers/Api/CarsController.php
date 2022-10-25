@@ -35,4 +35,11 @@ class CarsController extends Controller
     {
         return $this->carsProcess->getCamionetaId($id);
     }
+    public function addCamioneta(Request $request){
+        return $this->carsProcess->addCamioneta($request);
+    }
+    public function getCamionetaAuth()
+    {
+        return $this->carsProcess->getCamionetaAuth();
+    }
 }

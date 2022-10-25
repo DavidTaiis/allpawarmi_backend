@@ -20,7 +20,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'photo' => ImageResource::collection($this->images),
             'phone' => $this->phone_number,
-            'role' => $this->roles[0]->name,
+            'role' => $this->roles,
             'idetification_card' => $this->identification_card
         ];
     }

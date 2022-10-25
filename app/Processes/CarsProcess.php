@@ -50,4 +50,19 @@ class CarsProcess
         CarsResource::withoutWrapping();
         return new CarsResource($camioneta);
     }
+    public function addCamioneta($request)
+    {
+        $input = $request->all();
+        $this->carsRepository->addCamioneta($input);
+        
+        return Response::json([
+            'status' => 'success',
+            'message' => '! Camioneta creada correctamente.!',
+        ], 200);
+    }
+    public function getCamionetaAuth(){
+        $camioneta = $this->carsRepository->getCamionetaAuth();
+        CarsResource::withoutWrapping();
+        return new CarsResource($camioneta);
+    }
 }

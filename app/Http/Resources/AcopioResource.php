@@ -17,8 +17,10 @@ class AcopioResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'lat' => $this->lat,
-            'lng' => $this->lng,
+            "position" => [
+                'lat' => $this->lat,
+                'lng' => $this->lng
+            ],
             'description' => $this->description,
             'days' => $this->days,
             'hours' => $this->hours,

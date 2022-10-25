@@ -36,11 +36,11 @@ class AcopioProcess
         return AcopioResource::collection($acopios);
     }
 
-    public function  getAcopioId($acopioId)
+    public function  getAcopioId()
     {
-        $acopio = $this->acopioRepository->getAcopioId($acopioId);
+        $acopio = $this->acopioRepository->getAcopioId();
         AcopioResource::withoutWrapping();
-        return AcopioResource::make($acopio);
+        return AcopioResource::collection($acopio);
     }
    
     public function addAcopio($request)
@@ -50,7 +50,7 @@ class AcopioProcess
         
         return Response::json([
             'status' => 'success',
-            'message' => '! Notificación creada correctamente.!',
+            'message' => '! Centro de acopio creada correctamente.!',
         ], 200);
     }
 }

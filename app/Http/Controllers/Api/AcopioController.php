@@ -28,9 +28,9 @@ class AcopioController extends Controller
         return $this->acopioProcess->getAcopios();
     }
 
-    public function getAcopioId($acopioId)
+    public function getAcopioId()
     {
-        return $this->acopioProcess->getAcopioId($acopioId);
+        return $this->acopioProcess->getAcopioId();
     }
     public function addAcopio(Request $request)
     {

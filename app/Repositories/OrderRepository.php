@@ -19,6 +19,7 @@ class OrderRepository
        $order->id_client =  $userId;
        $order->id_seller =  $input["id_seller"];
        $order->total =  $input["total"];
+       $order->place_delivery = $input["place_delivery"];
        $order->deliver_date =  $input["deliver_date"];
        $order->status = "Pendiente";    
         $order->save();

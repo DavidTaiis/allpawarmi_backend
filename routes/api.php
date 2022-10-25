@@ -18,11 +18,14 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Api\Auth'], function () {
 });
 
 Route::group(['prefix' => 'user', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
-    Route::post('register', 'UserController@register');
     Route::get('getFarmer/{id?}', 'UserController@getFarmerId');
     Route::get('getUser', 'UserController@getUser');
     Route::post('updateProfileUser', 'UserController@updateProfileUser');
 
+});
+
+Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
+    Route::post('register', 'UserController@register');
 });
 
 Route::group(['prefix' => 'consumer', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
@@ -41,6 +44,8 @@ Route::group(['prefix' => 'geolocation', 'namespace' => 'Api','middleware' => 'a
     Route::post('addGeolocation', 'geolocationMaController@addGeolocation');
     Route::get('getGeolocationFarmers', 'geolocationMaController@getGeolocationFarmers');      
     Route::get('getGeolocationFarmerId/{id}', 'geolocationMaController@getGeolocationFarmerId');      
+    Route::get('getSellerPoits', 'geolocationMaController@getSellerPoits');      
+
 });
 
 Route::group(['prefix' => 'notification', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
@@ -49,14 +54,14 @@ Route::group(['prefix' => 'notification', 'namespace' => 'Api','middleware' => '
 
 });
 
-Route::group(['prefix' => 'lider', 'namespace' => 'Api'], function () {
-    Route::get('getAssociationById/{farmerId}', 'AssociationController@getAssociationById');   
+Route::group(['prefix' => 'lider', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
+    Route::get('getAssociationById', 'AssociationController@getAssociationById');   
     Route::post('updateAssociation', 'AssociationController@updateAssociation');   
 });
 
-Route::group(['prefix' => 'acopio', 'namespace' => 'Api'], function () {
+Route::group(['prefix' => 'acopio', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
     Route::get('getAcopios', 'AcopioController@getAcopios');
-    Route::get('getAcopioId/{acopioId}', 'AcopioController@getAcopioId');
+    Route::get('getAcopioId', 'AcopioController@getAcopioId');
     Route::post('addAcopio', 'AcopioController@addAcopio');
 });
 
@@ -77,5 +82,11 @@ Route::group(['prefix' => 'seller', 'namespace' => 'Api','middleware' => 'auth:a
     Route::get('getMeasures', 'ProductController@getMeasures');
     Route::get('deleteProduct/{id}', 'ProductController@deleteProduct');
 });
+
+Route::group(['prefix' => 'camioneta', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
+    Route::post('addCamioneta', 'CarsController@addCamioneta');
+   /*  Route::get('getCamionetaAuth', ) */
+});
+
 
 

@@ -16,23 +16,27 @@ class AcopioRepository
     return $acopios->get() ?? null;
 
     }
-    public function getAcopioId($id)
+    public function getAcopioId()
     {
-        $acopio = Acopio::query()->find($id);
-        return $acopio ?? null;
+        $userId = Auth::user()->id;
+        $acopio = Acopio::query();
+        $acopio->where("users_id", $userId );
+        return $acopio->get() ?? null;
     }
 
     public function addAcopio($input)
     {
-       
-       $acopio = new Acopio();
+        $userId = Auth::user()->id;
+       $acopio = Acopio::query()
+       ->where("users_id", $userId)->first() ?? new Acopio();
        $acopio->name =  $input["name"];
        $acopio->lng =  $input["lng"];
        $acopio->lat =  $input["lat"];
        $acopio->days =  $input["days"];
        $acopio->hours =  $input["hours"];
        $acopio->description =  $input["description"];
-       $acopio->users_id =  $input["users_id"];
+       $acopio->status =  "ACTIVE";
+       $acopio->users_id =  $userId;
         $acopio->save();
 
     }

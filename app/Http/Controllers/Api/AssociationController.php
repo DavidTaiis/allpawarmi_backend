@@ -28,9 +28,9 @@ class AssociationController extends Controller
         return $this->associationProcess->addAssociation($request);
     }
     
-    public function getAssociationById($farmerId)
+    public function getAssociationById()
     {
-        return $this->associationProcess->getAssociationById($farmerId);
+        return $this->associationProcess->getAssociationById();
     }
 
     public function updateAssociation(Request $request)

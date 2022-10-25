@@ -29,4 +29,27 @@ class CarsRepository
         $camioneta = Cars::query()->find($id);
         return $camioneta ?? null;
     }
+
+    public function addCamioneta($input)
+    {
+        $userId = Auth::user()->id;
+       $camioneta = Cars::query()
+       ->where("users_id", $userId)->first() ?? new Cars();
+       $camioneta->car_plate =  $input["car_plate"];
+       $camioneta->lng =  $input["lng"];
+       $camioneta->lat =  $input["lat"];
+       $camioneta->description =  $input["description"];
+       $camioneta->	type =  $input["type"];
+       $camioneta->	color =  $input["color"];
+       $camioneta->status =  "ACTIVE";
+       $camioneta->users_id =  $userId;
+        $camioneta->save();
+
+    }
+    public function getCamionetaAuth(){
+        $userId = Auth::user()->id;
+        $camioneta = Cars::query()->find($userId);
+        return $camioneta ?? null;
+    }
+
 }

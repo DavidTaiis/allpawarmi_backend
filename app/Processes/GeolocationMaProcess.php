@@ -57,4 +57,11 @@ class GeolocationMaProcess
         GeolocationMaResource::withoutWrapping();
         return GeolocationMaResource::collection($geolocation);
     }
-}
+
+    public function getSellerPoits()
+    {
+        $geolocation = $this->geolocationMaRepository->getSellerPoits();
+        GeolocationMaResource::withoutWrapping();
+        return GeolocationMaResource::collection($geolocation);
+    }
+}   

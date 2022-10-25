@@ -29,9 +29,9 @@ class AssociationProcess
      * @return \Illuminate\Http\JsonResponse
      */
 
-    public function  getAssociationById($request)
+    public function  getAssociationById()
     {  
-        $association = $this->associationRepository->getAssociationById($farmerId);
+        $association = $this->associationRepository->getAssociationById();
         AssociationResource::withoutWrapping();
         return AssociationResource::collection($association);
     }
