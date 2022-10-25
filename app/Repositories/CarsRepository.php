@@ -48,8 +48,9 @@ class CarsRepository
     }
     public function getCamionetaAuth(){
         $userId = Auth::user()->id;
-        $camioneta = Cars::query()->find($userId);
-        return $camioneta ?? null;
+        $camioneta = Cars::query();
+        $camioneta->where("users_id", $userId );
+        return $camioneta->get() ?? null;
     }
 
 }

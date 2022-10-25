@@ -21,8 +21,7 @@ class CarsResource extends JsonResource
             'type' => $this->type,
             'color' => $this->color,
             'position'=> ['lat' => $this->lat,
-                'lng' => $this->lng],
-            
+                'lng' => $this->lng],   
             'status' => $this->status,
             'name' => $this->user->name,
             'phone' => $this->user->phone_number

@@ -63,6 +63,6 @@ class CarsProcess
     public function getCamionetaAuth(){
         $camioneta = $this->carsRepository->getCamionetaAuth();
         CarsResource::withoutWrapping();
-        return new CarsResource($camioneta);
+        return CarsResource::collection($camioneta);
     }
 }

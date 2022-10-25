@@ -85,7 +85,7 @@ Route::group(['prefix' => 'seller', 'namespace' => 'Api','middleware' => 'auth:a
 
 Route::group(['prefix' => 'camioneta', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
     Route::post('addCamioneta', 'CarsController@addCamioneta');
-   /*  Route::get('getCamionetaAuth', ) */
+    Route::get('getCamionetaAuth','CarsController@getCamionetaAuth');
 });
 
 
