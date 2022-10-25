@@ -77,5 +77,9 @@ class Stop extends Model
     {
         return $this->belongsTo(TransportGeolocation::class, 'transport_geolocation_id');
     }
+    public function lineBus()
+    {
+        return $this->belongsTo(BusesLine::class, 'buses_linea_id');
+    }
 
 }

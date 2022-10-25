@@ -28,5 +28,15 @@ class BusesLineController extends Controller
         return $this->busesLineProcess->getBusesLine();
     }
 
+    public function getStops()
+    {
+        return $this->busesLineProcess->getStops();
+    }
+
+    public function getLineBusesWithStops($idLineBus)
+    {
+        return $this->busesLineProcess->getLineBusesWithStops($idLineBus);
+    }
+
 
 }
