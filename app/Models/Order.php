@@ -84,5 +84,12 @@ class Order extends Model
     {
         return $this->belongsTo(user::class, 'id_client');
     }
+     /**
+     * @return HasMany
+     */
+    public function measureProductos()
+    {
+        return $this->hasMany(ProductOrder::class, 'order_id');
+    }
 
 }

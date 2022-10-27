@@ -56,5 +56,13 @@ class User extends Authenticatable
     {
         return $this->morphMany(Image::class, 'entity');
     }
+
+     /**
+     * @return HasMany
+     */
+    public function geolocationConsumer()
+    {
+        return $this->hasMany(GeolocationMa::class, 'users_id')->where('type' , 'Consumidor');
+    }
     
 }

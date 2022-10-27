@@ -44,5 +44,4 @@ class OrderController extends Controller
     {
         return $this->orderProcess->getOrdersBySeller();
     }
-
 }

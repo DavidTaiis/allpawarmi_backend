@@ -35,6 +35,8 @@ class GeolocationMa extends Model
     protected $fillable = [
         'id',
         'name',
+        'days',
+        'hours',
         'lat',
         'lng',
         'type',
@@ -52,6 +54,8 @@ class GeolocationMa extends Model
         'id' => 'integer',
         'users_id' => 'integer',
         'name' => 'string',
+        'days' => 'string',
+        'hours' => 'string',
         'lat' => 'string',
         'lng' => 'string',
         'type' => 'text',

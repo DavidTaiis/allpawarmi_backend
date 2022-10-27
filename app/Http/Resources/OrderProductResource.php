@@ -16,11 +16,16 @@ class OrderProductResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'product_name' => $this->products->name,
-            'quantity' => $this->quantity,
-            'subtotal' => $this->subtotal,
-
-    
+            'client' => $this->userClient->name,
+            'phone_client' => $this->userClient->phone_number,
+            'position' =>[
+                'lat' => $this->userClient->geolocationConsumer[0]->lat,
+                'lng' => $this->userClient->geolocationConsumer[0]->lng,
+            ],
+            'total' => $this->total,
+            'place' => $this->place_delivery,
+            'images' => $this->userClient->images[0]->url,
+            'products' => ProductDetailsOrderResource::collection($this->measureProductos)
         ];
     }
 }

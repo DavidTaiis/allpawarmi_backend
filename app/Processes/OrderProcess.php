@@ -11,6 +11,7 @@ use App\Models\ProductOrder;
 use App\Models\Users;
 use App\Models\Product;
 use App\Repositories\OrderRepository;
+use App\Repositories\GeolocationMaRepository;
 use Auth;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
@@ -24,11 +25,14 @@ class OrderProcess
      */
 
     private $orderRepository;
+    private $geolocationMaRepository;
+
 
  
-    public function __construct( OrderRepository $orderRepository)
+    public function __construct( OrderRepository $orderRepository ,GeolocationMaRepository $geolocationMaRepository)
     {
         $this->orderRepository = $orderRepository;
+        $this->geolocationMaRepository = $geolocationMaRepository;
     }
 
     /**
@@ -37,7 +41,7 @@ class OrderProcess
 
     public function createOrder($request)
     {
-        try {
+         try {
             DB::beginTransaction();
             $userId = Auth::user()->id;
             $input = $request->all();
@@ -57,7 +61,7 @@ class OrderProcess
                 'status' => 'failed',
                 'message' => '! Algo sucedio!',
             ], 404);
-        }
+        } 
       
     }
     public function getOrdersByConsumerId(){
@@ -74,9 +78,10 @@ class OrderProcess
     }
 
     public function getProductsOrder($orderId){
+        
         $orders = $this->orderRepository->getProductsOrder($orderId);
         OrderProductResource::withoutWrapping();
-        return OrderProductResource::collection($orders);
+        return new OrderProductResource($orders);
 
     }
 

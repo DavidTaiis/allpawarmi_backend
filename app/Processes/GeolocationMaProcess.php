@@ -64,4 +64,10 @@ class GeolocationMaProcess
         GeolocationMaResource::withoutWrapping();
         return GeolocationMaResource::collection($geolocation);
     }
+    
+    public function getGeolocationConsumer($id){
+        $geolocation = $this->geolocationMaRepository->getGeolocationConsumer($id);
+        GeolocationMaResource::withoutWrapping();
+        return GeolocationMaResource::collection($geolocation);
+    }
 }   

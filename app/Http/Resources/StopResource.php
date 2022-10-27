@@ -26,7 +26,8 @@ class StopResource extends JsonResource
             "idStop" => $this->id,
             "descriptionStop" => $this->description,
             "nameStop" => $this->name,
-            "positionStop" => [
+            "status" => $this->status,
+            "position" => [
                 "lat" => $this->geolocation->lat,
                 "lng" => $this->geolocation->lng,
             ]        

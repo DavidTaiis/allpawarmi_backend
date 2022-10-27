@@ -31,7 +31,7 @@ class OrderRepository
     {
         $productOrder = new ProductOrder();
         $productOrder->order_id = $order->id;
-        $productOrder->products_id = $products["id"];
+        $productOrder->measures_product_id = $products["id"];
         $productOrder->quantity = $products["quantity"];
         $productOrder->subtotal = $products["subtotal"];
         
@@ -55,10 +55,9 @@ class OrderRepository
     }
     
     public function getProductsOrder($orderId){
-        $order  = ProductOrder::query();
-        $order->where('order_id' , $orderId);
-        $order->with(['products']);
-        return $order->get() ?? null;
+        $order  =  Order::find($orderId);
+        
+        return $order ?? null;
     }
     
     public function updateStatus($input){

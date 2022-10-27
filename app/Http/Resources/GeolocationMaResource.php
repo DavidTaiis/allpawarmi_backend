@@ -23,6 +23,8 @@ class GeolocationMaResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'type' => $this->type,
+            'days' => $this->days,
+            'hours' => $this->hours,
             'users_id' => $this->users_id
 
         ];

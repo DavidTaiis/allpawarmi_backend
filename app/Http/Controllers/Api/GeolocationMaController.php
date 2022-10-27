@@ -41,4 +41,9 @@ class GeolocationMaController extends Controller
     {
         return $this->geolocationMaProcess->getSellerPoits();
     }
+
+    public function getGeolocationConsumer($id)
+    {
+        return $this->geolocationMaProcess->getGeolocationConsumer($id);
+    }
 }

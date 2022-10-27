@@ -24,14 +24,14 @@ class SharedRepository
 
     public function addShared($input)
     {
-       
+        $userId = Auth::user()->id;
        $shared = new Shared();
        $shared->name =  $input["name"];
        $shared->meeting_point =  $input["meeting_point"];
        $shared->date =  $input["date"];
        $shared->hour =  $input["hour"];
        $shared->status =  $input["status"];
-       $shared->users_id =  $input["users_id"];
+       $shared->users_id =  $userId;
         $shared->save();
 
     }

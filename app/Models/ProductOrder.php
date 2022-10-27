@@ -34,7 +34,7 @@ class ProductOrder extends Model
      */
     protected $fillable = [
         'order_id',
-        'products_id',
+        'measures_product_id',
         'status',
         'quantity',
         'subtotal'
@@ -48,7 +48,7 @@ class ProductOrder extends Model
     protected $casts = [
         'status' => 'string',
         'order_id' => 'integer',
-        'products>_id' => 'integer',
+        'measures_product_id' => 'integer',
         'quantity' => 'integer',
         'subtotal' => 'decimal:2'
       
@@ -64,9 +64,9 @@ class ProductOrder extends Model
         'updated_at',
     ];
 
-    public function products()
+    public function measuresProduct()
     {
-        return $this->belongsTo(Product::class, 'products_id');
+        return $this->belongsTo(MeasureProduct::class, 'measures_product_id');
     }
 
     public function order()

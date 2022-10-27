@@ -61,6 +61,8 @@ class GeolocationMaRepository
        $geolocation->name =  $name;
        $geolocation->lat =  $input["lat"];
        $geolocation->lng =  $input["lng"];
+       $geolocation->days =  $input["days"] ?? "";
+       $geolocation->hours =  $input["hours"] ?? "";
        $geolocation->type =  $input["type"];
        $geolocation->description =  $input["description"];
        $geolocation->users_id =  $userId;
@@ -88,9 +90,17 @@ class GeolocationMaRepository
     public function getGeolocationFarmerId($id){
         $geolocation  = GeolocationMa::query();
         $geolocation->where("users_id",$id)
-        ->where("type", "Huerto")->orWhere("type", "PuntoVenta");
+        ->whereIn("type", ["Huerto", "PuntoVenta"]);
         
         return $geolocation->get() ?? null;
+
+    }
+    public function getGeolocationConsumer($id){
+        $geolocation  = GeolocationMa::query();
+        $geolocation->where("users_id",$id)
+        ->where("type", "Consumidor");
+        
+        return $geolocation->first() ?? null;
 
     }
 
