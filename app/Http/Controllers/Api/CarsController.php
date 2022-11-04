@@ -42,4 +42,11 @@ class CarsController extends Controller
     {
         return $this->carsProcess->getCamionetaAuth();
     }
+    public function addRoutePrivate(Request $request){
+        return $this->carsProcess->addRoutePrivate($request);
+    }
+    public function getRoutesPrivate(){
+        return $this->carsProcess->getRoutesPrivate();
+        
+    }
 }

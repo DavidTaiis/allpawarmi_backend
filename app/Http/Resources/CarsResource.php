@@ -24,7 +24,8 @@ class CarsResource extends JsonResource
                 'lng' => $this->lng],   
             'status' => $this->status,
             'name' => $this->user->name,
-            'phone' => $this->user->phone_number
+            'phone' => $this->user->phone_number,
+            'image' => $this->user->images[0]->url ?? ""
 
         ];
     }

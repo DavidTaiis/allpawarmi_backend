@@ -22,6 +22,7 @@ class SharedResource extends JsonResource
             'hour' => $this->hour,
             'status' => $this->status,
             'users_id' => $this->user->name,
+            'id_users' => $this->user->id,
         ];
     }
 }

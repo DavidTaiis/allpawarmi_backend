@@ -66,4 +66,9 @@ class OrderRepository
         
         $order->save();
     }
+    public function getOrders(){
+        $userId = Auth::user()->id;
+        $order  = Order::query();
+        return $order->get() ?? null;
+    }
 }

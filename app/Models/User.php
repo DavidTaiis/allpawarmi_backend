@@ -64,5 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(GeolocationMa::class, 'users_id')->where('type' , 'Consumidor');
     }
+    public function geolocationSeller()
+    {
+        return $this->hasMany(GeolocationMa::class, 'users_id')->where('type' , 'PuntoVenta');
+    }
     
 }

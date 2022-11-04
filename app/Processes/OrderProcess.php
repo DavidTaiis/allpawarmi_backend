@@ -94,4 +94,10 @@ class OrderProcess
             'message' => '! Actualizada correctamente.!',
         ], 200);
     }
+    public function getOrders(){
+       
+        $orders = $this->orderRepository->getOrders();
+        OrderResource::withoutWrapping();
+        return OrderResource::collection($orders);
+    }
 }

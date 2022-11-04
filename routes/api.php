@@ -28,7 +28,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
     Route::post('register', 'UserController@register');
 });
 
-Route::group(['prefix' => 'consumer', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
+Route::group(['prefix' => 'consumer', 'namespace' => 'Api' ,'middleware' => 'auth:api'], function () {
     Route::get('get-farmers', 'ConsumerController@getFarmers');
     Route::get('get-products/{farmerId?}', 'ConsumerController@getProductsByFarmer');
     Route::get('get-product/{productId?}', 'ConsumerController@getProductById');
@@ -68,7 +68,7 @@ Route::group(['prefix' => 'acopio', 'namespace' => 'Api','middleware' => 'auth:a
 Route::group(['prefix' => 'seller', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
     Route::get('getBusesLine', 'BusesLineController@getBusesLine');   
     Route::get('getCamionetas', 'CarsController@getCamionetas');   
-    Route::get('getPrivado', 'CarsController@getPrivado');   
+    Route::get('getRoutesPrivate', 'CarsController@getRoutesPrivate');   
     Route::get('getShared', 'SharedController@getShared');   
     Route::post('addShared', 'SharedController@addShared');   
     Route::get('getCamionetaId/{id}', 'CarsController@getCamionetaId');
@@ -81,11 +81,17 @@ Route::group(['prefix' => 'seller', 'namespace' => 'Api','middleware' => 'auth:a
     Route::get('getMeasures', 'ProductController@getMeasures');
     Route::get('getMeasures', 'ProductController@getMeasures');
     Route::get('deleteProduct/{id}', 'ProductController@deleteProduct');
+    Route::get('getComercios', 'ComercioController@getComercios');
+
 });
 
 Route::group(['prefix' => 'camioneta', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
     Route::post('addCamioneta', 'CarsController@addCamioneta');
     Route::get('getCamionetaAuth','CarsController@getCamionetaAuth');
+    Route::post('addRoutePrivate', 'CarsController@addRoutePrivate');
+    Route::get('getOrders','OrderController@getOrders');
+    
+    
 });
 
 Route::group(['prefix' => 'lineBus', 'namespace' => 'Api','middleware' => 'auth:api'], function () {
