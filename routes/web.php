@@ -103,6 +103,14 @@ Route::group(['middleware' => ['auth', 'rbac']], function () {
         Route::post('saveMeasure', 'MeasureController@postSave')->name('saveMeasure');
     });
 
+    Route::group(['prefix' => 'comercio'], function () {
+        Route::get('/', 'ComercioController@index')->name('viewIndexComercio');
+        Route::get('index', 'ComercioController@index')->name('viewIndexComercio');
+        Route::get('form/{id?}', 'ComercioController@getForm')->name('getFormComercio');
+        Route::get('list', 'ComercioController@getList')->name('listDataComercio');
+        Route::post('saveComercio', 'ComercioController@postSave')->name('saveComercio');
+    });
+
     Route::group(['prefix' => 'news'], function () {
         Route::get('/', 'NewsController@index')->name('viewIndexNews');
         Route::get('index', 'NewsController@index')->name('viewIndexNews');

@@ -19,7 +19,8 @@ class ComercioResource extends JsonResource
             'name' => $this->name,
             "position" => [
                 'lat' => $this->lat,
-                'lng' => $this->lng
+                'lng' => $this->lng,
+                'type' => $this->name
             ],
             'description' => $this->description,
         ];

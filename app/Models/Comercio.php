@@ -46,6 +46,7 @@ class Comercio extends Model
         'lat',
         'lng',
         'description',
+        'status'
 
     ];
 
@@ -59,7 +60,7 @@ class Comercio extends Model
         'lat' => 'string',
         'lng' => 'string',
         'description' => 'string',
-
+        'status' => 'string'
     ];
 
     /**

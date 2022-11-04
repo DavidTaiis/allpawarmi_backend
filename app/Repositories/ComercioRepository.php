@@ -11,7 +11,7 @@ use App\Repositories\LevelRepository;
 class ComercioRepository
 {
     public function getComercios(){
-        $comercios = Comercio::query();
+        $comercios = Comercio::query()->where('status', 'ACTIVE');
 
     return $comercios->get() ?? null;
 
