@@ -4,6 +4,8 @@ namespace App\Validators;
 
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use App\Rules\ValidationIdentification;
+
 
 /**
  * Class LoginValidator
@@ -22,7 +24,9 @@ class UserValidator extends BaseValidator
                 'required',
             ],
             'identification_card' => [
-                'required'
+                'required',
+                new ValidationIdentification(),
+
             ],
             'role' => [
                 'required'
